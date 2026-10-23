@@ -1,0 +1,15 @@
+﻿@model int
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if (Model == 0)
+{
+    <button type="submit" class="btn btn-success w-100"><i class="fas fa-plus-square"></i> Create</button>
+}
+else
+{
+    <button type="submit" class="btn btn-info w-100"><i class="fas fa-pencil"></i> Edit</button>
+}
+<br />
+<a asp-action="Index" class="btn btn-link"><i class="fas fa-long-arrow-left"></i>&nbsp;Back to List</a>

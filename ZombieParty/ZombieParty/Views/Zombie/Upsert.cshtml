@@ -1,0 +1,62 @@
+﻿@model ZombieParty.Models.Zombie
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Zombie</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Upsert" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDesc" class="control-label"></label>
+                <textarea asp-for="ShortDesc" class="form-control summernote"></textarea>
+                <span asp-validation-for="ShortDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+
+                <input type="file" name="files" onchange="this.nextElementSibling.style.display = 'none'" class="form-control" />
+                <img class="w-100" src="@AppConstants.ImagePathView@(string.IsNullOrWhiteSpace(Model.Image) ? AppConstants.ImageGeneric : Model.Image)" />
+
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZombieTypeId" class="control-label"></label>
+                <select asp-for="ZombieTypeId" asp-items="@ViewBag.ZombieTypes" class="form-control"></select>
+                <span asp-validation-for="ZombieTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Point" class="control-label"></label>
+                <input asp-for="Point" class="form-control" />
+                <span asp-validation-for="Point" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <hr />
+                <partial name="_UpsertButton" model="@Model?.Id ?? 0" />
+            </div>
+        </form>
+
+    </div>
+
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $('.summernote').summernote();
+        });
+    </script>
+
+}

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ZombieParty.Models.Weapon>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Upsert" class="btn btn-success"><i class="fas fa-plus-square"></i> &nbsp;  Create New Weapon</a>
+</p>
+<table class="table bg-white shadow">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Force)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resistance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lifespan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtyBought)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Force)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Resistance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lifespan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QtyBought)
+                </td>
+                <td>
+                    <a asp-action="Upsert" asp-route-WeaponId="@item.Id" class="btn btn-secondary mt-1 text-nowrap"><i class="fas fa-pencil"></i>&nbsp; Edit</a>
+                    <a asp-action="Delete" asp-route-WeaponId="@item.Id" class="btn btn-danger  mt-1 text-nowrap"><i class="fas fa-trash"></i>&nbsp; Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
